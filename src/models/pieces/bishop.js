@@ -1,47 +1,53 @@
-import Square from '../square.js'
-import Piece from './piece.js'
-import King from './king.js'
+import Square from '../square.js';
+import Piece from './piece.js';
 
-class Bishop extends Piece {
-  constructor(player) {
-    super(player)
-  }
-
-  getAvailableMoves(board) {
-    const loc = board.findPiece(this)
-    const moves = []
-
-    const dirs = [
-      { dr: 1, dc: 1 },
-      { dr: 1, dc: -1 },
-      { dr: -1, dc: 1 },
-      { dr: -1, dc: -1 }
-    ]
-
-    for (let { dr, dc } of dirs) {
-      let candidate = new Square(loc.row + dr, loc.col + dc)
-      while (board.contains(candidate)) {
-        // Check if there is a piece in the way
-        const capturable = board.getPiece(candidate)
-
-        if (capturable) {
-          if (
-            capturable.player !== this.player &&
-            !(capturable instanceof King)
-          ) {
-            moves.push(candidate)
-          }
-          break
-        }
-
-        moves.push(candidate)
-
-        candidate = new Square(candidate.row + dr, candidate.col + dc)
-      }
+export default class Bishop extends Piece {
+    constructor(player) {
+        super(player);
     }
 
-    return moves
-  }
+    getAvailableMoves(board) {
+        let location = board.findPiece(this);
+        let moves = [];
+
+        // Define the four diagonal directions
+        const directions = [
+            { row: 1, col: 1 },   // Top-right
+            { row: 1, col: -1 },  // Top-left
+            { row: -1, col: 1 },  // Bottom-right
+            { row: -1, col: -1 }  // Bottom-left
+        ];
+
+        // Loop through each direction
+        for (let direction of directions) {
+            let row = location.row + direction.row;
+            let col = location.col + direction.col;
+
+            // Continue moving in the current direction
+            while (row >= 0 && row < 8 && col >= 0 && col < 8) {
+                let square = new Square(row, col);
+                let piece = board.getPiece(square);
+
+                if (piece) { // Check if there is a piece on the square
+                    if (piece.player !== this.player) {
+                        moves.push(square); // Capture opponent's piece
+                    }
+                    break; // Stop if a piece is encountered
+                } else {
+                    moves.push(square); // Add empty square as a valid move
+                }
+
+                row += direction.row;
+                col += direction.col;
+            }
+        }
+
+        return moves;
+    }
+
+    moveTo(board, newSquare) {
+        const currentSquare = board.findPiece(this);
+        board.movePiece(currentSquare, newSquare);
+    }
 }
 
-export default Bishop
