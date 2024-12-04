@@ -15,7 +15,8 @@
     "test:d2e2": "mocha tests/exercises/day-2/exercise-2.test.js",
     "test:d2e3": "mocha tests/exercises/day-2/exercise-3.test.js",
     "test:maths": "mocha tests/maths.test.js",
-    "test:rectangles": "mocha tests/rectangles.test.js"
+    "test:rectangles": "mocha tests/rectangles.test.js",
+    "test:bishop": "mocha tests/models/pieces/bishop.spec.js"
   },
   "devDependencies": {
     "mocha": "^10.3.0",
