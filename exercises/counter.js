@@ -3,6 +3,7 @@ class Counter {
     #count
     constructor() {
     this.#count = 0
+
     }
 increment() {
     this.#count +=1
@@ -18,8 +19,9 @@ getCount() {
 
 // Replace `null` with an _instance_ of your counter
 const counterInstance = new Counter()
+const counterInstance2 = new Counter(10)
 
 // Please don't change the lines below!
 export { Counter, counterInstance }
 
-console.log(counterInstance)
+console.log(counterInstance2)

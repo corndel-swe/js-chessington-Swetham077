@@ -1,9 +1,9 @@
 import Square from '../square.js';
 import Piece from './piece.js';
 
-export default class Bishop extends Piece {
+export default class Bishop {
     constructor(player) {
-        super(player);
+        
     }
 
     getAvailableMoves(board) {
@@ -12,7 +12,7 @@ export default class Bishop extends Piece {
 
         // Define the four diagonal directions
         const directions = [
-            { row: 1, col: 1 },   // Top-right
+            { row: 1, col: 1 },  // Top-right
             { row: 1, col: -1 },  // Top-left
             { row: -1, col: 1 },  // Bottom-right
             { row: -1, col: -1 }  // Bottom-left
@@ -50,4 +50,3 @@ export default class Bishop extends Piece {
         board.movePiece(currentSquare, newSquare);
     }
 }
-
