@@ -24,11 +24,11 @@ export class Rectangle {
   }
 }
 
-export class Square {
+export class Square extends Rectangle {
   #side
 
   constructor(side) {
-    this.#side = side
+    super(side, side);
   }
 
   area() {

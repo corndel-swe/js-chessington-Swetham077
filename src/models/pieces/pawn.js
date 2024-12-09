@@ -28,5 +28,6 @@ export default class Pawn {
   moveTo(board, newSquare) {
     const currentSquare = board.findPiece(this)
     board.movePiece(currentSquare, newSquare)
+    
   }
 }
