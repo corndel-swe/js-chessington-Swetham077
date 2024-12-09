@@ -17,8 +17,12 @@
     "test:maths": "mocha tests/maths.test.js",
     "test:rectangles": "mocha tests/rectangles.test.js",
     "test:bishop": "mocha tests/models/pieces/bishop.spec.js",
-    "test:king": "mocha tests/models/pieces/king.spec.js"
-    
+    "test:king": "mocha tests/models/pieces/king.spec.js",
+    "test:knight": "mocha tests/models/pieces/knight.spec.js",
+    "test:queen": "mocha tests/models/pieces/queen.spec.js",
+    "test:rook": "mocha tests/models/pieces/rook.spec.js",
+    "test:pawn": "mocha tests/models/pieces/pawn.spec.js"
+
   },
   "devDependencies": {
     "mocha": "^10.3.0",
