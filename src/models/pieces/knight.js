@@ -1,9 +1,10 @@
 import Square from '../square.js';
+import King from './king.js';
 import Piece from './piece.js';
 
-export default class Knight {
+export default class knight extends Piece {
   constructor(player) {
-    this.player = player;
+    super(player);
   }
 
   getAvailableMoves(board) {
@@ -31,17 +32,20 @@ export default class Knight {
         let square = new Square(row, col);
         let piece = board.getPiece(square);
 
-        if (!piece || piece.player !== this.player) {
-          moves.push(square); // Add the move if the square is empty or contains an opponent's piece
+        if (piece) {
+          if (piece.player !== this.player && !(piece instanceof King)){
+            moves.push(square);
+          }
+          break;
+        } else{
+          moves.push(square);
         }
+        
       }
     }
 
     return moves;
   }
 
-  moveTo(board, newSquare) {
-    const currentSquare = board.findPiece(this);
-    board.movePiece(currentSquare, newSquare);
-  }
+ 
 }

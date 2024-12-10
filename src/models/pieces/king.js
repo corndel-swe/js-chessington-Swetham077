@@ -1,9 +1,9 @@
 import Square from '../square.js';
 import Piece from './piece.js';
 
-export default class King {
+export default class King extends Piece {
   constructor(player) {
-    this.player = player
+    super(player);
   }
 
   getAvailableMoves(board) {
@@ -48,9 +48,6 @@ export default class King {
     return moves;
 }
 
-moveTo(board, newSquare) {
-    const currentSquare = board.findPiece(this);
-    board.movePiece(currentSquare, newSquare);
-}
+
 }
  

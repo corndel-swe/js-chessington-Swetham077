@@ -1,9 +1,9 @@
 import Square from '../square.js';
 import Piece from './piece.js';
 
-export default class Bishop {
+export default class Bishop extends Piece {
     constructor(player) {
-        
+      super(player);
     }
 
     getAvailableMoves(board) {
@@ -43,10 +43,5 @@ export default class Bishop {
         }
 
         return moves;
-    }
-
-    moveTo(board, newSquare) {
-        const currentSquare = board.findPiece(this);
-        board.movePiece(currentSquare, newSquare);
     }
 }
